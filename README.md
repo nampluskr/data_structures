@@ -34,3 +34,7 @@
 - Sqrt Decomposition
 - Segment Tree
 - Fenwick Tree
+
+### 참고
+
+- [hello C / C++ - 헤더경로 지정](https://m.blog.naver.com/whj6973_m/220985597454)
