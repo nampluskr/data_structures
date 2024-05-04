@@ -1,10 +1,18 @@
-extern void test_linkedlist(int);
-extern void test_hashtable(int);
+#include <cstdio>
+#include "data.h"
+
+Data db[] = { { 10, 1 }, { 20, 2 }, { 30, 3 }, { 40, 4 } };
+int cnt = 4;
 
 int main()
 {
-    test_linkedlist(0);
-    test_hashtable(1);
+    for (int i = 0; i < cnt; i++)
+        printf("%s ", db[i].str().c_str());
+    printf("\n");
+
+    for (int i = 0; i < cnt; i++) {
+        printf("%s: hash=%d\n", db[i].str().c_str(), std::hash<Data>()(db[i]));
+    }
 
     return 0;
 }
