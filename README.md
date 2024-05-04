@@ -1,6 +1,10 @@
 # Data Strutures
 
-## 1. Elementary Data Structures
+## 기본 자료구조
+
+### 
+
+## 1. Data Structures
 
 ### Deque 
 
@@ -12,14 +16,21 @@
 
 ### Map (BST)
 
-### Hash Table
+### Elementary
 
-## 2. Advanced Data Structures
+- linked_list (head/tail)
 
-### Disjoint Set (Union-find)
+### Ref_SWEA
 
-### Sqrt Decomposition
+- deque
+- linked_list
+- set
+- map
+- priority_queue
 
-### Segment Tree
+### Advanced
 
-### Fenwick Tree
+- Disjoint Set (Union-find)
+- Sqrt Decomposition
+- Segment Tree
+- Fenwick Tree
