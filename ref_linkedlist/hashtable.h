@@ -1,6 +1,7 @@
 #pragma once
 
 #include "linkedlist.h"
+using namespace std;
 
 #define MAX_TABLE 1001
 
@@ -12,7 +13,7 @@ struct HashTable {
     };
     LinkedList<Pair> table[MAX_TABLE];
 
-    int hashfunc(const T1& key) { return hash<T1>(key); }
+    int hashfunc(const T1& key) const { return hash<T1>(key); }
     void clear() {
         for (int i = 0; i < MAX_TABLE; i++)
             table[i].clear();

@@ -12,8 +12,14 @@ struct LinkedList {
     int cnt = 0;
 
     void clear() {
-        while (!empty()) pop_front();
-        cnt = 0;
+        while (head != nullptr) {
+            Node* cur = head;
+            head = head->next;
+            delete cur; cnt--;
+        }
+        tail = nullptr;
+        // while (!empty()) pop_front();
+        // cnt = 0;
     }
     void push_back(const T& data) {
         Node* node = new Node{ data, nullptr };
@@ -28,12 +34,16 @@ struct LinkedList {
         cnt++;
     }
     void pop_front() {
-        Node* temp = head;
+        Node* cur = head;
         head = head->next;
-        delete temp;
+        delete cur; cnt--;
         if (head == nullptr) tail = nullptr;
-        cnt--;
     }
+    T front() { return head->data; }
+    T back() { return tail->data; }
+    bool empty() { return head == nullptr; }
+    int size() { return cnt; }
+
     Node* find(const T& data) {
         Node* cur = head;
         while (cur != nullptr) {
@@ -42,8 +52,18 @@ struct LinkedList {
         }
         return nullptr;
     }
-    T front() { return head->data; }
-    T back() { return tail->data; }
-    bool empty() { return head == nullptr; }
-    int size() { return cnt; }
+    void erase(const T& data) {
+        Node* prev = nullptr;
+        Node* cur = head;
+        while (cur != nullptr) {
+            if (cur->data == data) break;
+            prev = cur;
+            cur = cur->next;
+        }
+        if (cur == nullptr) return;
+        if (prev == nullptr) { head = cur->next; }
+        else { prev->next = cur->next; }
+        delete cur; cnt--;
+        if (head == nullptr) tail = nullptr;
+    }
 };
