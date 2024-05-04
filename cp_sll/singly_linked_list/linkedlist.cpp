@@ -2,18 +2,9 @@
 #include "linkedlist.h"
 #include "../data.h"
 
-LinkedList<Data> ll0;
+LinkedList<Data> li;
 
-template<typename T>
-void print_list(T& li) {
-    printf("[size=%d] ", li.size());
-    for (auto cur = li.head; cur; cur = cur->next)
-        printf("%s ", cur->data.str().c_str());
-    printf("\n");
-}
-
-template<typename T>
-void init_list(T& li) {
+void init_list(LinkedList<Data>& li) {
     li.push_back({ 10, 1 });
     li.push_back({ 20, 2 });
     li.push_back({ 30, 3 });
@@ -23,7 +14,6 @@ void init_list(T& li) {
 
 void test_linkedlist(int option){
     if (option == 0) return;
-    auto& li = ll0;
 
     printf("\n*** Push/Pop elements:\n");
     li.clear();

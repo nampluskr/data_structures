@@ -1,10 +1,10 @@
 #pragma once 
 
-#include "linkedlist.h"
+#include "..\singly_linked_list\linkedlist.h"
 
 template<typename T>
-struct stack: LinkedList<T> {
+struct Stack: LinkedList<T> {
     void push(const T& data) { push_front(data); }
-    void pop() { pop_back(); }
+    void pop() { pop_front(); }
     T top() { return front(); }
 };

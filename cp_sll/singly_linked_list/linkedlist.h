@@ -67,3 +67,12 @@ struct LinkedList {
         if (head == nullptr) tail = nullptr;
     }
 };
+
+
+template<typename T>
+void print_list(T& li) {
+    printf("[size=%d] ", li.size());
+    for (auto cur = li.head; cur; cur = cur->next)
+        printf("%s ", cur->data.str().c_str());
+    printf("\n");
+}
