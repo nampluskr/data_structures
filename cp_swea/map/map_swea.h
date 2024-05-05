@@ -127,12 +127,12 @@ struct Map {
         }
         return nullptr;
     }
-    void emplace(const T1& key, const T2& value) { put(key, value); }
+    void insert(const T1& key, const T2& value) { put(key, value); }
     void erase(const T1& key) { remove(key); }
     T2& operator[](const T1& key) {
         auto res = find(key);
         if (res == nullptr) {
-            emplace(key, {});
+            insert(key, {});
             res = find(key);
         }
         return res->value;

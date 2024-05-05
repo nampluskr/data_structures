@@ -1,5 +1,6 @@
 #pragma once
 
+// (SLL with head only)
 template<typename T>
 struct LinkedList {
     struct Node {
@@ -7,12 +8,18 @@ struct LinkedList {
         Node* next = nullptr;
     };
     Node* head = nullptr;
-    Node* tail = nullptr;
 
-    void push_back(const T& data) {
+    void clear() {
+        while (head != nullptr) {
+            Node* temp = head;
+            head = head->next;
+            delete head;
+        }
+    }
+    void insert(const T& data) {
         Node* node = new Node{ data, nullptr };
-        if (head == nullptr ) head = tail = node;
-        else { tail->next = node; tail = node; }
+        if (head != nullptr ) node->next = head;
+        head = node;
     }
     Node* find(const T& data) {
         Node* cur = head;
@@ -30,12 +37,10 @@ struct LinkedList {
             prev = cur;
             cur = cur->next;
         }
-        if (cur == nullptr) return;
+        if (cur == nullptr) return;     // Not found
+
         if (prev == nullptr) head = cur->next;
         else prev->next = cur->next;
-        if (tail == cur) tail = prev;
-        if (head == nullptr) tail = nullptr;
         delete cur;
     }
-
 };

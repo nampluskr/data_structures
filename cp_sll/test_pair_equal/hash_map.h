@@ -11,9 +11,13 @@ struct HashMap {
     };
     LinkedList<Pair> table[MAX_TABLE];
 
+    void clear() {
+        for (int i = 0; i < MAX_TABLE; i++)
+            table[i].clear();
+    }
     void insert(const T1& key, const T2& value) {
         int hash_value = key.hash(MAX_TABLE);
-        table[hash_value].push_back({ key, value });
+        table[hash_value].insert({ key, value });
     }
     Pair* find(const T1& key) {
         int hash_value = key.hash(MAX_TABLE);
@@ -30,10 +34,7 @@ struct HashMap {
         auto res = find(key);
         if (res == nullptr) {
             insert(key, {});
-            return find(key)->value;
-            // int hash_value = key.hash(MAX_TABLE);
-            // table[hash_value].push_back({ key, {} });
-            // return table[hash_value].tail->data.value;
+            res = find(key);
         }
         return res->value;
     }
