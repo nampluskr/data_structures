@@ -34,7 +34,7 @@ struct LinkedList {
         cnt++;
     }
     void pop_front() {
-        Node* cur = head;
+        Node* cur = head;int hash_value = hash_func<T1>(key);
         head = head->next;
         delete cur; cnt--;
         if (head == nullptr) tail = nullptr;
@@ -48,24 +48,24 @@ struct LinkedList {
         Node* cur = head;
         while (cur != nullptr) {
             if (cur->data == data) return cur;
-            cur = cur->data;
+            cur = cur->next;
         }
         return nullptr;
     }
-    void erase(const T& data) {
-        Node* prev = nullptr;
-        Node* cur = head;
-        while (cur != nullptr) {
-            if (cur->data == data) break;
-            prev = cur;
-            cur = cur->next;
-        }
-        if (cur == nullptr) return;
-        if (prev == nullptr) { head = cur->next; }
-        else { prev->next = cur->next; }
-        delete cur; cnt--;
-        if (head == nullptr) tail = nullptr;
-    }
+    // void erase(const T& data) {
+    //     Node* prev = nullptr;
+    //     Node* cur = head;
+    //     while (cur != nullptr) {
+    //         if (cur->data == data) break;
+    //         prev = cur;
+    //         cur = cur->next;
+    //     }
+    //     if (cur == nullptr) return;
+    //     if (prev == nullptr) { head = cur->next; }
+    //     else { prev->next = cur->next; }
+    //     delete cur; cnt--;
+    //     if (head == nullptr) tail = nullptr;
+    // }
 };
 
 

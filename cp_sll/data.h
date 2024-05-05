@@ -29,13 +29,12 @@ struct std::hash<Data> {
 };
 
 
-// template<typename T>
-// int hash_func(const T& data) {
-//     return 0;
-// }
+template<typename T>
+int hash_func(const T& data) {
+    return 0;
+}
 
-
-// template<>
-// int hash_func(const Data& data) {
-//     return (10000 * data.number + data.id) % 107;
-// }
+template<>
+int hash_func(const Data& data) {
+    return (10000 * data.number + data.id) % 107;
+}
