@@ -2,9 +2,9 @@
 #include "map_swea.h"
 #include "..\data.h"
 
-Map<Data, int> m;
+MapSWEA<Data, int> m;
 
-void inorder(Map<Data, int>::Node* node) {
+void inorder(MapSWEA<Data, int>::Node* node) {
     if (node == nullptr) return;
     inorder(node->left);
     printf("(%d, %d):%d  ", node->key.number, node->key.id, node->value);

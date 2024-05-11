@@ -3,7 +3,7 @@
 #define MAX 100
 
 template<typename T>
-struct Deque {
+struct DequeSWEA {
     T arr[MAX];
     int head = -1;
     int tail = 0;

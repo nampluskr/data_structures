@@ -4,7 +4,7 @@
 #include<malloc.h>
 
 template<typename T1, typename T2>
-struct Map {
+struct MapSWEA {
     struct Node {
         T1 key;
         T2 value;
@@ -50,7 +50,7 @@ struct Map {
         return NULL;
     }
 
-    Node* find(const T1& key) {
+    T2* find(const T1& key) {
         return find(root, key);
     }
 
@@ -106,5 +106,14 @@ struct Map {
     void clear() { 
         clearRec(root);
         root = nullptr;
+    }
+
+    T2& operator[](const T1& key) {
+        auto res = find(key);
+        if (res == nullptr) {
+            insert(key, {});
+            res = find(key);
+        }
+        return res;
     }
 };

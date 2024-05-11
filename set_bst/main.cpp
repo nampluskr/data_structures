@@ -2,9 +2,9 @@
 #include "set_swea.h"
 #include "..\data.h"
 
-Set<Data> s;
+SetSWEA<Data> s;
 
-void inorder(Set<Data>::Node* node) {
+void inorder(SetSWEA<Data>::Node* node) {
     if (node == nullptr) return;
     inorder(node->left);
     printf("(%d, %d) ", node->key.number, node->key.id);

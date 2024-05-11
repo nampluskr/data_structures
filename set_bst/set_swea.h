@@ -3,7 +3,7 @@
 #include<malloc.h>
 
 template<typename T>
-struct Set {
+struct SetSWEA {
     struct Node {
         T key;
         Node *left, *right;

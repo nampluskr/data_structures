@@ -1,9 +1,11 @@
+#pragma once
+
 #include <malloc.h>
 
 #define NULL (0)
 
 template<typename T>
-struct LinkedList {
+struct LinkedListSWEA {
     struct Node
     {
         T data;
@@ -69,12 +71,12 @@ struct LinkedList {
     }
 
     void clear() {
-        Node* cur = head->next;
-        while (cur != NULL) {
-            Node* temp = cur;
-            cur = cur->next;
-            free(cur);
+        while (head != NULL) {
+            Node* temp = head;
+            head = head->next;
+            free(temp);
         }
+        head = list_create({});
     }
     void insert(const T& data) { 
         Node* node = list_create(data);
