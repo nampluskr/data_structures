@@ -12,4 +12,7 @@ struct Data {
     bool operator==(const Data& data) const {
         return number == data.number && id == data.id;
     }
+    int hash(int max_table) const {
+        return (number * 10000 + id) % max_table;
+    }
 };

@@ -20,10 +20,10 @@ struct LinkedList {
         if (head == nullptr) { head = node; }
         else { node->next = head; head = node; }
     }
-    Node* find(const T& data) {
+    T* find(const T& data) {
         Node* cur = head;
         while (cur != nullptr) {
-            if (cur->data == data) return cur;
+            if (cur->data == data) return &cur->data;
             cur = cur->next;
         }
         return nullptr;

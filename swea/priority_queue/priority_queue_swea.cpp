@@ -20,3 +20,10 @@ void test_priority_queue_swea(int option) {
         printf("(%d, %d)\n", cur.number, cur.id);
     }
 }
+
+int main()
+{
+    test_priority_queue_swea(1);
+
+    return 0;
+}

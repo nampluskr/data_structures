@@ -1,14 +1,32 @@
 # Data Strutures
 
-## Elementary Data Strutures
-- stack (array / deque / linked list)
-- queue (array / deque / linked list)
-- deque (array / linked list)
-- linked_list (SLL / DLL / head only / head + tail)
-- set (BST)
-- map (BST)
-- priority_queue (Max. Heap)
-- hash_table (Hash Chainining)
+## Unordered Data Strutures
+
+- deque (singly linked list, head / tail) 
+- linked_list (head only, iterative / recursive)
+- stack (linked list / array)
+- queue (linked list / array)
+
+## Ordered Data Structures
+
+- ordered_linked_list (silgly linked list, head only)
+- priority_queue (max heap)
+- double_ended_pq
+- median_pq
+- binary_search_tree (iterative / recursive)
+
+## Hashing
+
+- hash_chaining (T1 $\to$ T2, sll / dll / bst)
+- hash_chaining_array (int $\to$ int)
+
+## SWEA
+
+- deque_swea (array)
+- linked_list_swea (doubly linked list, head / tail, dummy node)
+- priority_queue_swea (min heap -> max heap)
+- set_swea (binary search tree)
+- map_swea (binary search tree)
 
 ## Advanced Data Strutures
 

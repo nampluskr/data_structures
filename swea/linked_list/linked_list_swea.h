@@ -2,8 +2,6 @@
 
 #include <malloc.h>
 
-#define NULL (0)
-
 template<typename T>
 struct LinkedListSWEA {
     struct Node
@@ -82,13 +80,13 @@ struct LinkedListSWEA {
         Node* node = list_create(data);
         list_insert(head, node);
     }
-    Node* find() {
+    T* find(const T& data) {
         Node* cur = head->next;
-        whiel (cur != NULL) {
-            if (cur->data == data) return cur;
+        while (cur != NULL) {
+            if (cur->data == data) return &cur->data;
             cur = cur->next;
         }
-        return nullptr;
+        return NULL;
     }
     void erase(const T& data) {
         list_erase(head, data);

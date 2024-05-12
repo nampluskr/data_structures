@@ -19,5 +19,11 @@ void test_priority_queue(int option) {
         auto cur = pq.top(); pq.pop();
         printf("(%d, %d)\n", cur.number, cur.id);
     }
+}
 
+int main()
+{
+    test_priority_queue(1);
+
+    return 0;
 }

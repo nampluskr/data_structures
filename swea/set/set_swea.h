@@ -23,7 +23,7 @@ struct SetSWEA {
 
         if (key < node->key)
             node->left = insertRec(node->left, key);
-        else if (key > node->key)
+        else if (node->key < key)
             node->right = insertRec(node->right, key);
 
         return node;
@@ -33,10 +33,10 @@ struct SetSWEA {
         root = insertRec(root, key);
     }
 
-    Node* findRec(Node *node, const T& key) {
+    T* findRec(Node *node, const T& key) {
         if (node != NULL) {
             if (key == node->key)
-                return node;
+                return &node->key;
             if (key < node->key)
                 findRec(node->left, key);
             else
@@ -45,7 +45,7 @@ struct SetSWEA {
         return NULL;
     }
 
-    Node* find(const T& key) {
+    T* find(const T& key) {
         return findRec(root, key);
     }
 
@@ -64,7 +64,7 @@ struct SetSWEA {
 
         if (key < node->key)
             node->left = eraseRec(node->left, key);
-        else if (key > node->key)
+        else if (node->key < key )
             node->right = eraseRec(node->right, key);
         else {
             if (node->left == NULL) {
