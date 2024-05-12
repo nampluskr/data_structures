@@ -1,6 +1,6 @@
 #include <cstdio>
 #include "map_swea.h"
-#include "..\data.h"
+#include "..\..\data.h"
 
 MapSWEA<Data, int> m;
 

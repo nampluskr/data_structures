@@ -1,6 +1,6 @@
 #include <cstdio>
 #include "set_swea.h"
-#include "..\data.h"
+#include "..\..\data.h"
 
 SetSWEA<Data> s;
 
