@@ -1,6 +1,6 @@
 # Data Strutures
 
-## Unordered Data Strutures
+## Unordered Data Structures
 
 - deque (singly linked list, head / tail) 
 - linked_list (head only, iterative / recursive)
@@ -28,7 +28,7 @@
 - set_swea (binary search tree)
 - map_swea (binary search tree)
 
-## Advanced Data Strutures
+## Advanced Data Structures
 
 - Disjoint Set (Union-find)
 - Sqrt Decomposition
