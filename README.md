@@ -30,10 +30,10 @@
 
 ## Advanced Data Structures
 
-- Disjoint Set (Union-find)
-- Sqrt Decomposition
-- Segment Tree
-- Fenwick Tree
+- union-find (Disjoint Set)
+- sqrt_decomposition
+- segment_tree
+- fenwick_tree
 
 ## User Defined Functions
 
