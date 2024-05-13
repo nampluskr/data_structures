@@ -4,8 +4,8 @@ template<typename T>
 struct BinarySearchTreeIter {
     struct Node {
         T data;
-        Node* prev = nullptr;
-        Node* next = nullptr;
+        Node* left = nullptr;
+        Node* right = nullptr;
     };
     Node* root;
 

@@ -89,15 +89,15 @@ struct SetSWEA {
         root = eraseRec(root, key);
     }
 
-    void clearRec(Node* node) {
-        if (node == NULL) return;
-        clearRec(node->left);
-        clearRec(node->right);
+    Node* clearRec(Node* node) {
+        if (node == NULL) return nullptr;
+        node->left = clearRec(node->left);
+        node->right = clearRec(node->right);
         free(node);
+        return nullptr;
     }
 
     void clear() { 
-        clearRec(root);
-        root = nullptr;
+        root = clearRec(root);
     }
 };
