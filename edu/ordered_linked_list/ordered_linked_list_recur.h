@@ -9,7 +9,7 @@ struct OrderedLinkedListRecur {
     Node* head = nullptr;
 
     Node* clearRecur(Node* cur) {
-        if (cur == nullptr) return cur;
+        if (cur == nullptr) return nullptr;
         cur->next = clearRecur(cur->next);
         delete cur;
         return nullptr;

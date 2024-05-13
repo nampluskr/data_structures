@@ -26,14 +26,15 @@ int main()
     s.insert(k2);
     s.insert(k1);
     s.insert(k5);
-    s.insert(k4);
-    print();
+    s.insert(k4); print();
 
     s.erase(k3); print();
     s.erase(k5); print();
     s.erase(k2); print();
 
-    s.clear();   print();
+    s.clear();    print();
+    s.insert(k4); print();
+    s.clear();    print();
 
     return 0;
 }

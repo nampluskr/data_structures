@@ -37,8 +37,8 @@ void test_linked_list(T& li) {
     printf(">> %d\n", li.find(d3));
 
     li.clear(); print(li);
-
     li.insert(d3); print(li);
+    li.clear(); print(li);
 }
 
 int main()
