@@ -1,4 +1,4 @@
-# Data Strutures
+# Data Structures
 
 ## Unordered Data Structures
 
