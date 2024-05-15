@@ -43,5 +43,11 @@
 
 ### 참고
 
-- [hello C / C++ - 헤더경로 지정](https://m.blog.naver.com/whj6973_m/220985597454)
-- [혀니C코딩-자료구조/알고리즘코드](https://cafe.naver.com/honeyc)
+- [혀니C코딩: 자료구조/알고리즘코드](https://cafe.naver.com/honeyc)
+  - [자료구조 & 알고리즘][05]단일 연결 리스트(singly linked list)
+  - [자료구조 & 알고리즘][06]이중 연결 리스트(doubly linked list)
+  - [자료구조 & 알고리즘][18일차 수업소스]이진 검색 트리(Binary Search Tree : BST)
+
+- [초이스 프로그래밍: c언어 자료구조](https://youtube.com/playlist?list=PLjq20pMYInLLWi5JBplcRZ6Z8_X5d3Tvb&si=LadRQqbsRtM-zx-g)
+  - 이진 탐색 트리: 개념과 구현(C언어)
+  - 힙 트리/힙 정렬: 개념과 구현(C언어)
