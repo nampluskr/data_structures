@@ -33,27 +33,26 @@ struct BinarySearchTreeRecur {
         if (cur->left == nullptr) return cur;
         return findMin(cur->left);
     }
-    Node* findMax(Node* cur) {
-        if (cur->right == nullptr) return cur;
-        return findMax(cur->right);
-    }
     // SWEA set
     Node* eraseRecur(Node* cur, const T& data) {
         if (cur == nullptr) return nullptr;
         if (cur->data == data) {
-            if (cur->left == nullptr) {
-                Node *child = cur->right;
+            // Case 1: No child
+            if (cur->left == nullptr && cur->right == nullptr) {
+                delete cur;
+                return nullptr;
+            }
+            // Case 2: One child
+            else if (cur->left == nullptr || cur->right == nullptr) {
+                Node* child = (cur->left != nullptr)? cur->left: cur->right;
                 delete cur;
                 return child;
+            // Case 3: Two children
+            } else {
+                Node* min_node = findMin(cur->right);
+                cur->data = min_node->data;
+                cur->right = eraseRecur(cur->right, cur->data);
             }
-            else if (cur->right == nullptr) {
-                Node *child = cur->left;
-                delete cur;
-                return child;
-            }
-            Node* min_node = findMin(cur->right);
-            cur->data = min_node->data;
-            cur->right = eraseRecur(cur->right, cur->data);
         }
         if (data < cur->data) cur->left = eraseRecur(cur->left, data);
         else cur->right = eraseRecur(cur->right, data);
