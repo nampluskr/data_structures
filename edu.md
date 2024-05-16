@@ -14,8 +14,7 @@
 - sll_recur.h
 
 ### 1-2. [deque] clear / push_front / pop_front / push_back / pop_back
-- deque_sll_head.h
-- deque_sll_head_tail.h
+- deque_sll.h
 - deque_sll_circluar.h
 - deque_dll_circluar.h
 - deque_array.h
