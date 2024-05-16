@@ -15,17 +15,19 @@
 
 ### 1-2. [deque] clear / push_front / pop_front / push_back / pop_back
 - deque_sll.h
-- deque_sll_circluar.h
-- deque_dll_circluar.h
+- deque_sll_circular.h
+- deque_dll_circular.h
 - deque_array.h
 
 ### 1-3. [stack] clear / push / pop / empty / top
 - stack_sll.h
 - stack_array.h
+- stack_deque.h
 
 ### 1-4. [queue] clear / push / pop / empty / front
 - queue_sll.h
 - queue_array.h
+- queue_deque.h
 
 ## 2. Ordered Containers
 
