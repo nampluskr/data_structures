@@ -1,5 +1,12 @@
 # Data Structures
 
+## 0. [swea_reference]
+- dll_swea.h
+- deque_swea.h
+- set_swea.h
+- map_swea.h
+- heap_swea.h
+
 ## 1. Unordered Containers
 
 ### 1-1. [linked_list] clear / insert / find / erase
@@ -48,31 +55,24 @@
 - hash_chaining_bst.h
 - hash_chaining_array.h
 
-## 4. [swea]
-- dll_swea.h
-- deque_swea.h
-- set_swea.h
-- map_swea.h
-- heap_swea.h
+## 4. [Range Query]
 
-## 5. [Range Query]
-
-### 5-1. [sqrt_decomposition]
+### 4-1. [sqrt_decomposition]
 - sqrt_decom_sum.h
 - sqrt_decom_min.h
 
-### 5-2. [segment_tree]
+### 4-2. [segment_tree]
 - seg_tree_sum.h
 - seg_tree_min.h
 - seg_tree_lazy_sum.h
 - seg_tree_lazy_min.h
 
-### 5-3. [fenwick_tree]
+### 4-3. [fenwick_tree]
 - fenwick_tree_min.h
 - fenwick_tree_sum.h
 
-## 6. Nonlinear Data Structures
+## 5. Nonlinear Data Structures
 
-### 6-1. [tree] clear / add_node / add_edge / get_lca / get_dist
+### 5-1. [tree] clear / add_node / add_edge / get_lca / get_dist
 
-### 6-2. [graph] clear / add_node / add_edge / get_shortest / dfs / bfs / dijkstra
+### 5-2. [graph] clear / add_node / add_edge / get_shortest / dfs / bfs / dijkstra
