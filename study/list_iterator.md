@@ -28,6 +28,7 @@ struct LinkedList {
         else { tail->next = node; tail = node; }
         cnt++;
     }
+    bool empty() { return head == nullptr;  }
     T front() { return head->data; }
     T back() { return tail->data; }
     int size() { return cnt; }
@@ -113,7 +114,9 @@ void test_list(T& li) {
 
     printf(">> front() = (%d, %d)\n", li.front().value, li.front().idx);
     printf(">> back()  = (%d, %d)\n", li.back().value, li.back().idx);
-    li.clear();
+
+    if (!li.empty())
+        li.clear();
 }
 
 int main()
