@@ -1,69 +1,55 @@
-### [linked_list.h] Iterator 구현 완료
+### [linked_list.h] Iterator 구현
 
 ```cpp
-#include <vector>
-#include "linked_list.h"
-#include "array_list.h"
-using namespace std;
-
-struct Data {
-    int value, idx;
-};
-
-vector<Data> vec;
-LinkedList<Data> li;
-ArrayList<Data, 20> arr;
+#pragma once
 
 template<typename T>
-void test_list(T& li) {
-    li.clear();
-    li.push_back({ 10, 1 });
-    li.push_back({ 20, 2 });
-    li.push_back({ 30, 3 });
-    li.push_back({ 40, 4 });
-    li.push_back({ 50, 5 });
-    //printf(">> size()  = %d\n", li.size());
-    //printf(">> begin() = %d\n", li.begin());
-    //printf(">> end()   = %d\n", li.end());
+struct LinkedList {
+    struct Node {
+        T data;
+        Node* next;
+    };
+    Node* head = nullptr;
+    Node* tail = nullptr;
+    int cnt = 0;
 
-    auto iter1 = li.begin();
-    auto iter2 = li.end();
+    void clear() { 
+        while (head != nullptr) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+        tail = nullptr;
+        cnt = 0;
+    }
+    void push_back(const T& data) {
+        Node* node = new Node{ data, nullptr };
+        if (head == nullptr) { head = tail = node; }
+        else { tail->next = node; tail = node; }
+        cnt++;
+    }
+    T front() { return head->data; }
+    T back() { return tail->data; }
+    int size() { return cnt; }
 
+    struct Iterator {
+        Node* ptr;
 
-    //printf(">> ");
-    //for (auto iter = li.begin(); iter != li.end(); iter++) {
-    //    auto data = *iter;
-    //    printf("(%d, %d) ", data.value, data.idx);
-    //}
-    //printf("\n");
+        Iterator(Node* ptr) { this->ptr = ptr; }
+        bool operator!=(const Iterator& iter) const { return ptr != iter.ptr; }
+        bool operator==(const Iterator& iter) const { return ptr == iter.ptr; }
+        T& operator*() { return ptr->data; }
+        Iterator& operator++() { ptr = ptr->next; return *this; }
+        Iterator operator++(int) { Iterator iter = *this; ptr = ptr->next; return iter; }
+    };
 
+    Iterator begin() { return Iterator(head); }
+    Iterator end() { return Iterator(nullptr); }
+};
 
-    //printf(">> ");
-    //for (const auto& data : li)
-    //    printf("(%d, %d) ", data.value, data.idx);
-    //printf("\n");
-
-    printf(">> front() = (%d, %d)\n", li.front().value, li.front().idx);
-    printf(">> back()  = (%d, %d)\n", li.back().value, li.back().idx);
-    li.clear();
-}
-
-int main()
-{
-    //printf("\n[vector]\n");
-    //test_list(vec);
-
-    //printf("\n[Linked list]\n");
-    //test_list(li);
-
-    printf("\n[Array list]\n");
-    test_list(arr);
-
-    return 0;
-}                                                                       
 ```
 
-### [array_list.h] iterator 구현 필요
+### [array_list.h] Iterator 구현
 
 ```cpp
 #pragma once
@@ -81,17 +67,9 @@ struct ArrayList {
     T back() { return arr[tail - 1]; }
     int size() { return tail - head; }
 
-    struct Iterator {
-        T* ptr;
-
-        Iterator(T* ptr = nullptr) { this->ptr = nullptr; }
-        bool operator!=(const Iterator& iter) const { return ptr != iter.ptr; }
-        T& operator*() { return *ptr; }
-        Iterator& operator++() { ptr++; return *this; }
-        Iterator operator++(int) { Iterator iter = *this; ptr++; return iter; }
-    };
-    Iterator begin() { return Iterator(&arr[head]); }
-    Iterator end() { return Iterator(&arr[tail]); }
+    // iterators
+    T* begin() { return &arr[head]; }
+    T* end() { return &arr[tail]; }
 };
 ```
 
@@ -119,26 +97,19 @@ void test_list(T& li) {
     li.push_back({ 30, 3 });
     li.push_back({ 40, 4 });
     li.push_back({ 50, 5 });
-    //printf(">> size()  = %d\n", li.size());
-    //printf(">> begin() = %d\n", li.begin());
-    //printf(">> end()   = %d\n", li.end());
 
-    auto iter1 = li.begin();
-    auto iter2 = li.end();
-
-
-    //printf(">> ");
-    //for (auto iter = li.begin(); iter != li.end(); iter++) {
-    //    auto data = *iter;
-    //    printf("(%d, %d) ", data.value, data.idx);
-    //}
-    //printf("\n");
+    printf(">> ");
+    for (auto iter = li.begin(); iter != li.end(); iter++) {
+        auto data = *iter;
+        printf("(%d, %d) ", data.value, data.idx);
+    }
+    printf("\n");
 
 
-    //printf(">> ");
-    //for (const auto& data : li)
-    //    printf("(%d, %d) ", data.value, data.idx);
-    //printf("\n");
+    printf(">> ");
+    for (const auto& data : li)
+        printf("(%d, %d) ", data.value, data.idx);
+    printf("\n");
 
     printf(">> front() = (%d, %d)\n", li.front().value, li.front().idx);
     printf(">> back()  = (%d, %d)\n", li.back().value, li.back().idx);
@@ -147,11 +118,11 @@ void test_list(T& li) {
 
 int main()
 {
-    //printf("\n[vector]\n");
-    //test_list(vec);
+    printf("\n[vector]\n");
+    test_list(vec);
 
-    //printf("\n[Linked list]\n");
-    //test_list(li);
+    printf("\n[Linked list]\n");
+    test_list(li);
 
     printf("\n[Array list]\n");
     test_list(arr);
