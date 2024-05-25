@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\..\swea\set\set_swea.h"
+#include "..\..\0_swea\set\set_swea.h"
 
 #define MAX_TABLE   1007
 

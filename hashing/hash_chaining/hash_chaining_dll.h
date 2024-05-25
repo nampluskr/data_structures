@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\..\swea\linked_list\linked_list_swea.h"
+#include "..\..\0_swea\linked_list\linked_list_swea.h"
 
 #define MAX_TABLE   1007
 
