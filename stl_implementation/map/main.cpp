@@ -1,90 +1,104 @@
 #include <map>
-#include "..\..\data.h"
+#include <unordered_map>
 #include "map_swea.h"
+// #include "hashfunc.cpp"
+// #include "hashmap_sll.h"
+// #include "hashmap_bst.h"
+// #include "hashmap_dll.h"
+// #include "hashmap_arr.h"
 using namespace std;
 
-map<Data, int> map_stl;
-MapSWEA<Data, int> map_swea;
+#define MAX_DATA    100
+
+struct Data {
+    int ID, score, idx;
+    bool operator==(const Data& data) const {
+        return ID == data.ID && score == data.score;
+    }
+} dataDB[MAX_DATA];
+int dataCnt;
+
+map<int, int> map_stl;
+unordered_map<int, int> umap_stl;
+MapSWEA<int, int> map_swea;
+// HashMapSLL<int, int> hashmap_sll;
+// HashMapDLL<int, int> hashmap_dll;
+// HashMapBST<int, int> hashmap_bst;
+// HashMap<MAX_DATA> hashmap_arr;
+
 
 template<typename T>
-void print_map(const T& m) {
-    printf(">> ");
-    for (const auto& data: m) {
-        // auto key = data.first;
-        // auto value = data.second;
-        // printf("(%d, %d):%d ", key.number, key.id, value);
-    }
-    printf("\n");
+int new_index(T& m, int key) {
+    int idx;
+    auto res = m.find(key);
+    if (res == m.end()) {
+        idx = dataCnt++;
+        m.emplace(key, idx);    // m.insert({ key, idx });
+    } else
+        idx = res->second;
+    return idx;
 }
 
-void inorder(MapSWEA<Data, 
-int>::Node* node) {
-    if (node == nullptr) return;
-    inorder(node->left);
-    printf("(%d, %d):%d  ", node->key.number, node->key.id, node->value);
-    inorder(node->right);
+
+template<typename T>
+int find_index(T& m, int key) {
+    auto res = m.find(key);
+    if (res == m.end()) return -1;
+    return res->second;
 }
 
-template<>
-void print_map(const MapSWEA<Data, int>& m) {
-    printf(">> ");
-    inorder(m.root);
-    printf("\n");
-}
 
 template<typename T>
 void test_map(T& m) {
-    Data d1{ 10, 1 }, d2{ 20, 2 }, d3{ 30, 3 };
+    int IDs[] = { 444, 555, 111, 333, 222, 666, };
+    int scores[] = { 4000, 5000, 1000, 3000, 2000, 6000, };
+    int n = 6;
+    dataCnt = 0;
 
-    printf("\n*** [Insert] ***\n");
     m.clear();
-    m.insert({ d1, 1111 });     // m.emplace(k1, 1111);
-    m.insert({ d2, 2222 });     // m.emplace(k2, 2222);
 
-    printf("\n*** [Find] ***\n");
-    printf(">> find d1 = %d\n", (m.find(d1) != m.end())? m.find(d1)->second: -1);
-    printf(">> find d2 = %d\n", (m.find(d2) != m.end())? m.find(d2)->second: -1);
-    printf(">> find d3 = %d\n", (m.find(d3) != m.end())? m.find(d3)->second: -1);
+    printf("*** Insert:\n");
+    for (int i = 0; i < n; i++) {
+        int idx = new_index(m, IDs[i]);
+        dataDB[idx] = { IDs[i], scores[i], idx };
+    }
 
-    printf("\n*** [Erase] ***\n");
-    m.erase(d1);
-    m.erase(d2);
-    m.erase(d3);
+    for (int i = 0; i < n; i++)
+        printf(">> (%d, %d)\n", IDs[i], find_index(m, IDs[i]));
 
-    printf("\n*** [Find] ***\n");
-    printf(">> find d1 = %d\n", (m.find(d1) != m.end())? m.find(d1)->second: -1);
-    printf(">> find d2 = %d\n", (m.find(d2) != m.end())? m.find(d2)->second: -1);
-    printf(">> find d3 = %d\n", (m.find(d3) != m.end())? m.find(d3)->second: -1);
+    printf("*** erase:\n");
+    m.erase(IDs[0]);
+    m.erase(IDs[4]);
 
-    printf("\n*** [Assign] ***\n");
-    m[d1] = 111;
-    m[d2] = 222;
+    for (int i = 0; i < n; i++)
+        printf(">> (%d, %d)\n", IDs[i], find_index(m, IDs[i]));
 
-    printf(">> map[d1] = %d\n", m[d1]);
-    printf(">> map[d2] = %d\n", m[d2]);
-    printf(">> map[d3] = %d\n", m[d3]);
-
-    printf("\n*** [Find] ***\n");
-    printf(">> find d1 = %d\n", (m.find(d1) != m.end())? m.find(d1)->second: -1);
-    printf(">> find d2 = %d\n", (m.find(d2) != m.end())? m.find(d2)->second: -1);
-    printf(">> find d3 = %d\n", (m.find(d3) != m.end())? m.find(d3)->second: -1);
-
-    // printf("\n*** [Erase] ***\n");
-    // m.clear();
-
-    // printf("\n*** [Find] ***\n");
-    // printf(">> find d1 = %d\n", (int)m.find(d1));
-    // printf(">> find d2 = %d\n", (int)m.find(d2));
-    // printf(">> find d3 = %d\n", (int)m.find(d3));
-
-    // m.clear();
+    m.clear();
 }
 
 
 int main()
 {
-    printf("\n[Map - STL]\n");
-    test_map(map_stl);
+    // printf("\n[map - STL]\n");
+    // test_map(map_stl);
+
+    // printf("\n[unordered_map - STL]\n");
+    // test_map(umap_stl);
+
+    printf("\n[Map - SWEA]\n");
+    test_map(map_swea);
+
+    // printf("\n[Hash Map using SLL]\n");
+    // test_map(hashmap_sll);
+
+    // printf("\n[Hash Map using DLL]\n");
+    // test_map(hashmap_dll);
+
+    // printf("\n[Hash Map using BST]\n");
+    // test_map(hashmap_bst);
+
+    // printf("\n[Hash Map using Array]\n");
+    // test_map(hashmap_arr);
 
     return 0;
 }

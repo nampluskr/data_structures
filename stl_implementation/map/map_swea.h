@@ -5,6 +5,7 @@
 
 template<typename T1, typename T2>
 struct MapSWEA {
+    struct Pair { T1 first; T2 second; };
     struct Node {
         T1 key;
         T2 value;
@@ -34,14 +35,14 @@ struct MapSWEA {
         return node;
     }
 
-    void insert(const T1& key, const T2& value) {
+    void emplace(const T1& key, const T2& value) {
         root = insertRec(root, key, value);
     }
 
-    T2* findRec(Node *node, const T1& key) {
+    Node* findRec(Node *node, const T1& key) {
         if (node != NULL) {
             if (key == node->key)
-                return &node->value;
+                return node;
             if (key < node->key)
                 findRec(node->left, key);
             else
@@ -50,9 +51,11 @@ struct MapSWEA {
         return NULL;
     }
 
-    T2* find(const T1& key) {
-        return find(root, key);
+    Pair* find(const T1& key) {
+        auto res = findRec(root, key);
+        return (res == nullptr)? nullptr: new Pair{res->key, res->value};
     }
+    Pair* end() { return nullptr;}
 
     Node *minValueNode(Node *node) {
         Node *root = node;
@@ -88,7 +91,6 @@ struct MapSWEA {
             node->value = temp->value;
             node->right = eraseRec(node->right, temp->key);
         }
-
         return node;
     }
 
@@ -111,9 +113,9 @@ struct MapSWEA {
     T2& operator[](const T1& key) {
         auto res = find(key);
         if (res == nullptr) {
-            insert(key, {});
+            emplace(key, {});
             res = find(key);
         }
-        return res;
+        return res->second;
     }
 };
