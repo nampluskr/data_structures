@@ -356,94 +356,105 @@ struct HashMapDLL {
 ```cpp
 #pragma once
 
-#include <malloc.h>
+#include<malloc.h>
 
 template<typename T>
-struct DoublyLinkedList {
-    struct Node
-    {
-        T data;
-        struct Node* prev;
-        struct Node* next;
+struct BinarySearchTree {
+    struct Node {
+        T key;
+        Node *left, *right;
     };
-    Node* head = list_create({});
+    Node *root = nullptr;
 
-    Node* list_create(const T& data)
-    {
-        Node* node = (Node*)malloc(sizeof(Node));
-        node->prev = NULL;
-        node->next = NULL;
-        node->data = data;
+    Node *newNode(const T& item) {
+        Node *temp = (Node *)malloc(sizeof(Node));
+        temp->key = item;
+        temp->left = temp->right = NULL;
+        return temp;
+    }
+
+    Node *insertRec(Node *node, const T& key) {
+        if (node == NULL)
+            return newNode(key);
+
+        if (key < node->key)
+            node->left = insertRec(node->left, key);
+        else if (node->key < key)
+            node->right = insertRec(node->right, key);
 
         return node;
     }
 
-    Node* list_insert(Node* head, Node* new_node)
-    {
-        Node* next = head->next;
-
-        head->next = new_node;
-        new_node->next = next;
-        new_node->prev = head;
-
-        if (next != NULL)
-        {
-            next->prev = new_node;
-        }
-        return new_node;
+    void insert(const T& key) {
+        root = insertRec(root, key);
     }
 
-    int list_erase(Node* head, const T& data)
-    {
-        Node* it = head->next;
-        int ret = 0;
-
-        while (it != NULL)
-        {
-            if (it->data == data)
-            {
-                Node* prev = it->prev;
-                Node* next = it->next;
-                Node* tmp = it;
-                it = it->next;
-                prev->next = next;
-                if (next != NULL)
-                {
-                    next->prev = prev;
-                }
-                free(tmp);
-                ret++;
-            }
+    Node* findRec(Node *node, const T& key) {
+        if (node != NULL) {
+            if (key == node->key)
+                return node;
+            if (key < node->key)
+                findRec(node->left, key);
             else
-            {
-                it = it->next;
-            }
-        }
-        return ret;
-    }
-
-    void clear() {
-        while (head != NULL) {
-            Node* temp = head;
-            head = head->next;
-            free(temp);
-        }
-        head = list_create({});
-    }
-    void insert(const T& data) {
-        Node* node = list_create(data);
-        list_insert(head, node);
-    }
-    Node* find(const T& data) {
-        Node* cur = head->next;
-        while (cur != NULL) {
-            if (cur->data == data) return cur;
-            cur = cur->next;
+                findRec(node->right, key);
         }
         return NULL;
     }
-    void erase(const T& data) {
-        list_erase(head, data);
+
+    Node* find(const T& key) {
+        return findRec(root, key);
+    }
+
+    Node *minValueNode(Node *node) {
+        Node *root = node;
+
+        while (root->left != NULL)
+            root = root->left;
+
+        return root;
+    }
+
+    Node *eraseRec(Node *node, const T& key) {
+        if (node == NULL)
+            return node;
+
+        if (key < node->key)
+            node->left = eraseRec(node->left, key);
+        else if (node->key < key )
+            node->right = eraseRec(node->right, key);
+        else {
+            if (node->left == NULL) {
+                Node *temp = node->right;
+                free(node);
+                return temp;
+            }
+            else if (node->right == NULL) {
+                Node *temp = node->left;
+                free(node);
+                return temp;
+            }
+
+            Node* temp = minValueNode(node->right);
+            node->key = temp->key;
+            node->right = eraseRec(node->right, temp->key);
+        }
+        return node;
+    }
+
+    void erase(const T& key) {
+        root = eraseRec(root, key);
+    }
+
+    Node* clearRec(Node* node) {
+        if (node == NULL) return nullptr;
+        node->left = clearRec(node->left);
+        node->right = clearRec(node->right);
+        free(node);
+        return nullptr;
+    }
+
+    void clear() { 
+        root = clearRec(root);
     }
 };
 
@@ -452,13 +463,14 @@ struct DoublyLinkedList {
 #endif
 
 template<typename T1, typename T2>
-struct HashMapDLL {
+struct HashMapBST {
     struct Pair {
         T1 first;
         T2 second;
         bool operator==(const Pair& pair) const { return first == pair.first; }
+        bool operator<(const Pair& pair) const { return first < pair.first; }
     };
-    DoublyLinkedList<Pair> table[MAX_TABLE];
+    BinarySearchTree<Pair> table[MAX_TABLE];
 
     void clear() {
         for (int i = 0; i < MAX_TABLE; i++)
@@ -474,7 +486,7 @@ struct HashMapDLL {
     Pair* find(const T1& key) {
         int h = hashfunc(key);
         auto res = table[h].find({ key, {} });
-        return &res->data;
+        return &res->key;
     }
     Pair* end() { return nullptr; }
     void erase(const T1& key) {

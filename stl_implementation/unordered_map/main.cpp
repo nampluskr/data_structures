@@ -1,6 +1,9 @@
-#include <map>
 #include <unordered_map>
-#include "map_swea.h"
+#include "hashfunc.cpp"
+#include "hashmap_sll.h"
+#include "hashmap_bst.h"
+#include "hashmap_dll.h"
+#include "hashmap_arr.h"
 using namespace std;
 
 #define MAX_DATA    100
@@ -13,8 +16,11 @@ struct Data {
 } dataDB[MAX_DATA];
 int dataCnt;
 
-map<int, int> map_stl;
-MapSWEA<int, int> map_swea;
+unordered_map<int, int> umap_stl;
+HashMapSLL<int, int> hashmap_sll;
+HashMapDLL<int, int> hashmap_dll;
+HashMapBST<int, int> hashmap_bst;
+HashMap<MAX_DATA> hashmap_arr;
 
 
 template<typename T>
@@ -69,11 +75,20 @@ void test_map(T& m) {
 
 int main()
 {
-    printf("\n[map - STL]\n");
-    test_map(map_stl);
+    printf("\n[unordered_map - STL]\n");
+    test_map(umap_stl);
 
-    printf("\n[map - SWEA]\n");
-    test_map(map_swea);
+    printf("\n[Hash Map using SLL]\n");
+    test_map(hashmap_sll);
+
+    printf("\n[Hash Map using DLL]\n");
+    test_map(hashmap_dll);
+
+    printf("\n[Hash Map using BST]\n");
+    test_map(hashmap_bst);
+
+    printf("\n[Hash Map using Array]\n");
+    test_map(hashmap_arr);
 
     return 0;
 }

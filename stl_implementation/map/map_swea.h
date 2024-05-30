@@ -1,29 +1,17 @@
 #pragma once
 
-#include<stdio.h>
-#include<malloc.h>
-
 template<typename T1, typename T2>
 struct MapSWEA {
-    struct Pair { T1 first; T2 second; };
     struct Node {
         T1 key;
         T2 value;
-        Node *left, *right;
+        Node* left, * right;
     };
-    Node *root = nullptr;
+    struct Pair { T1 first; T2 second; };
+    Node* root;
 
-    Node *newNode(const T1& k, const T2& v) {
-        Node *temp = (Node *)malloc(sizeof(Node));
-        temp->key = k;
-        temp->value = v;
-        temp->left = temp->right = NULL;
-        return temp;
-    }
-
-    Node *insertRec(Node *node, const T1& key, const T2& value) {
-        if (node == NULL)
-            return newNode(key, value);
+    Node* insertRec(Node* node, const T1& key, const T2& value) {
+        if (node == nullptr) return new Node{ key, value, nullptr, nullptr };
 
         if (key < node->key)
             node->left = insertRec(node->left, key, value);
@@ -39,35 +27,33 @@ struct MapSWEA {
         root = insertRec(root, key, value);
     }
 
-    Node* findRec(Node *node, const T1& key) {
-        if (node != NULL) {
-            if (key == node->key)
-                return node;
-            if (key < node->key)
-                findRec(node->left, key);
-            else
-                findRec(node->right, key);
-        }
-        return NULL;
+    Node* findRec(Node* node, const T1& key) {
+        if (node == nullptr) return nullptr;
+        if (key == node->key)
+            return node;
+        if (key < node->key)
+            return findRec(node->left, key);
+        else if (node->key < key)
+            return findRec(node->right, key);
     }
 
     Pair* find(const T1& key) {
-        auto res = findRec(root, key);
-        return (res == nullptr)? nullptr: new Pair{res->key, res->value};
+        auto node = findRec(root, key);
+        return (node == nullptr) ? nullptr : new Pair{ node->key, node->value };
     }
-    Pair* end() { return nullptr;}
+    Pair* end() { return nullptr; }
 
-    Node *minValueNode(Node *node) {
-        Node *root = node;
+    Node* minValueNode(Node* node) {
+        Node* root = node;
 
-        while (root->left != NULL)
+        while (root->left != nullptr)
             root = root->left;
 
         return root;
     }
 
-    Node *eraseRec(Node *node, const T1& key) {
-        if (node == NULL)
+    Node* eraseRec(Node* node, const T1& key) {
+        if (node == nullptr)
             return node;
 
         if (key < node->key)
@@ -75,14 +61,14 @@ struct MapSWEA {
         else if (key > node->key)
             node->right = eraseRec(node->right, key);
         else {
-            if (node->left == NULL) {
-                Node *temp = node->right;
-                free(node);
+            if (node->left == nullptr) {
+                Node* temp = node->right;
+                delete node;
                 return temp;
             }
-            else if (node->right == NULL) {
-                Node *temp = node->left;
-                free(node);
+            else if (node->right == nullptr) {
+                Node* temp = node->left;
+                delete node;
                 return temp;
             }
 
@@ -97,25 +83,19 @@ struct MapSWEA {
     void erase(const T1& key) {
         root = eraseRec(root, key);
     }
-    
+
     void clearRec(Node* node) {
-        if (node == NULL) return;
+        if (node == nullptr) return;
         clearRec(node->left);
         clearRec(node->right);
-        free(node);
+        delete node;
     }
 
-    void clear() { 
-        clearRec(root);
-        root = nullptr;
-    }
+    void clear() { clearRec(root); root = nullptr; }
 
     T2& operator[](const T1& key) {
         auto res = find(key);
-        if (res == nullptr) {
-            emplace(key, {});
-            res = find(key);
-        }
+        if (res == end()) { emplace(key, {}); res = find(key); }
         return res->second;
     }
 };
