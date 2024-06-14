@@ -1,39 +1,52 @@
 # Data Structures
 
-## Unordered Data Structures
+## stl_implementation
+- deque
+- map
+- priority_queue
+- queue
+- set
+- stack
+- unordered_map
+- vector_iterator
 
-- deque (singly linked list, head / tail) 
-- linked_list (head only, iterative / recursive)
-- stack (linked list / array)
-- queue (linked list / array)
+## dynamic_data_structures
+- binary_search_tree
+  - bst_iter
+  - bst_iter_dummy
+  - bst_recur
+- double_ended_linked_list
+  - linear_sll_head
+  - linear_sll_head_tail
+  - linear_dll_head_tail
+  - circular_dll_head
+- unordered_linked_list
+  - ordered_sll_iter
+  - ordered_sll_iter_dummy
+  - ordered_sll_recur
+- ordered_linked_list
+  - unordered_sll_iter
+  - unordered_sll_iter_dummy
+  - unordered_sll_recur
 
-## Ordered Data Structures
-
-- ordered_linked_list (silgly linked list, head only)
-- priority_queue (max heap)
-- double_ended_pq
-- median_pq
-- binary_search_tree (iterative / recursive)
-
-## Hashing
-
-- hash_chaining (T1 $\to$ T2, sll / dll / bst)
-- hash_chaining_array (int $\to$ int)
-
-## SWEA
-
-- deque_swea (array)
-- linked_list_swea (doubly linked list, head / tail, dummy node)
-- priority_queue_swea (min heap -> max heap)
-- set_swea (binary search tree)
-- map_swea (binary search tree)
-
-## Advanced Data Structures
-
-- union-find (Disjoint Set)
+## static_data_structures
+- binary_heap
+  - max_heap
+  - median_heap
+  - min_max_heap
 - sqrt_decomposition
-- segment_tree
-- fenwick_tree
+  - sqrt_decomp_range_sum
+  - sqrt_decomp_range_min
+- segment tree
+  - seg_tree_range_sum
+  - seg_tree_range_min
+  - seg_tree_range_lazy
+- fenwick tree
+  - fenwick_tree_range_sum
+  - fenwick_tree_range_min
+- disjoint_set
+  - disjoint_set_linear
+  - disjoint_set_tree
 
 ## User Defined Functions
 
