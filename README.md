@@ -56,7 +56,7 @@
 - math
 - etc
 
-### 참고
+### References
 
 - [혀니C코딩: 자료구조/알고리즘코드](https://cafe.naver.com/honeyc)
   - [자료구조 & 알고리즘][05]단일 연결 리스트(singly linked list)
@@ -66,3 +66,7 @@
 - [초이스 프로그래밍: c언어 자료구조](https://youtube.com/playlist?list=PLjq20pMYInLLWi5JBplcRZ6Z8_X5d3Tvb&si=LadRQqbsRtM-zx-g)
   - 이진 탐색 트리: 개념과 구현(C언어)
   - 힙 트리/힙 정렬: 개념과 구현(C언어)
+
+- [개발자영맨: Data Structures & Algorithms](https://youtube.com/playlist?list=PL-OC--HdIAXMXZ3IXSeLaO9Rl6qJNGc6g&si=s8ltP4O4Aqdwan95)
+  - Segment Tree
+  - Fenwick Tree
