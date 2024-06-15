@@ -1,50 +1,53 @@
 # Data Structures
 
 ## stl_implementation
-- deque
-- map
-- priority_queue
-- queue
-- set
-- stack
-- unordered_map
-- vector_iterator
+
+- [ ] deque
+- [ ] map
+- [ ] priority_queue
+- [ ] queue
+- [ ] set
+- [ ] stack
+- [ ] unordered_map
+- [ ] vector_iterator
 
 ## dynamic_data_structures
-- binary_search_tree
+
+- [ ] binary_search_tree
   - bst_iter
   - bst_iter_dummy
   - bst_recur
-- double_ended_linked_list
+- [ ] double_ended_linked_list
   - linear_sll_head
   - linear_sll_head_tail
   - linear_dll_head_tail
   - circular_dll_head
-- unordered_linked_list
+- [ ] unordered_linked_list
   - ordered_sll_iter
   - ordered_sll_iter_dummy
   - ordered_sll_recur
-- ordered_linked_list
+- [ ] ordered_linked_list
   - unordered_sll_iter
   - unordered_sll_iter_dummy
   - unordered_sll_recur
 
 ## static_data_structures
-- binary_heap
+
+- [ ] binary_heap
   - max_heap
   - median_heap
   - min_max_heap
-- sqrt_decomposition
+- [ ] sqrt_decomposition
   - sqrt_decomp_range_sum
   - sqrt_decomp_range_min
-- segment tree
+- [ ] segment tree
   - seg_tree_range_sum
   - seg_tree_range_min
   - seg_tree_range_lazy
-- fenwick tree
+- [ ] fenwick tree
   - fenwick_tree_range_sum
   - fenwick_tree_range_min
-- disjoint_set
+- [ ] disjoint_set
   - disjoint_set_linear
   - disjoint_set_tree
 
