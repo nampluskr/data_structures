@@ -22,19 +22,19 @@
   - linear_sll_head_tail
   - linear_dll_head_tail
   - circular_dll_head
-- [ ] unordered_linked_list
+- [x] unordered_linked_list
   - ordered_sll_iter
   - ordered_sll_iter_dummy
   - ordered_sll_recur
-- [ ] ordered_linked_list
+- [x] ordered_linked_list
   - unordered_sll_iter
-  - unordered_sll_iter_dummy
   - unordered_sll_recur
 
 ## static_data_structures
 
 - [x] binary_heap
   - max_heap
+  - min_heap
   - median_heap
   - min_max_heap
 - [ ] sqrt_decomposition
