@@ -13,9 +13,8 @@
 
 ## dynamic_data_structures
 
-- [ ] binary_search_tree
+- [x] binary_search_tree
   - bst_iter
-  - bst_iter_dummy
   - bst_recur
 - [ ] double_ended_linked_list
   - linear_sll_head
