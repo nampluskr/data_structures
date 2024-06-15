@@ -2,14 +2,14 @@
 
 ## stl_implementation
 
-- [ ] deque
-- [ ] map
-- [ ] priority_queue
-- [ ] queue
-- [ ] set
-- [ ] stack
-- [ ] unordered_map
-- [ ] vector_iterator
+- [x] deque
+- [x] map
+- [x] priority_queue
+- [x] queue
+- [x] set
+- [x] stack
+- [x] unordered_map
+- [x] vector_iterator
 
 ## dynamic_data_structures
 
@@ -33,7 +33,7 @@
 
 ## static_data_structures
 
-- [ ] binary_heap
+- [x] binary_heap
   - max_heap
   - median_heap
   - min_max_heap
