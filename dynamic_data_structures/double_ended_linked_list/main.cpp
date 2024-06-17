@@ -51,8 +51,8 @@ void test_deque(T& deq) {
 
 int main()
 {
-    // printf("\n[STL deque]\n");
-    // test_deque(deq);
+    printf("\n[STL deque]\n");
+    test_deque(deq);
 
     printf("\n[Linear Singly Linked List with Head Node]\n");
     test_deque(sll_head);
@@ -63,11 +63,11 @@ int main()
     printf("\n[Linear Doubly Linked List with Head and Tail Nodes]\n");
     test_deque(dll_head_tail);
 
-    // printf("\n[Circular Doubly Linked List with Head Node]\n");
-    // test_deque(circular_dll_head);
+    printf("\n[Circular Doubly Linked List with Head Node]\n");
+    test_deque(circular_dll_head);
 
-    // printf("\n[Circular Doubly Linked List with Dummy Node]\n");
-    // test_deque(circular_dll_dummy);
+    printf("\n[Circular Doubly Linked List with Dummy Node]\n");
+    test_deque(circular_dll_dummy);
 
     return 0;
 }
