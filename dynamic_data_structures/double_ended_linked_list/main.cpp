@@ -4,12 +4,15 @@
 #include "linear_sll_head.h"
 #include "linear_dll_head_tail.h"
 #include "circular_dll_head.h"
+#include "circular_dll_dummy.h"
+
 
 std::deque<Data> deq;
 LinearSLLHead<Data> sll_head;
 LinearSLLHeadTail<Data> sll_head_tail;
 LinearDLLHeadTail<Data> dll_head_tail;
 CircularDLLHead<Data> circular_dll_head;
+CircularDLLDummy<Data> circular_dll_dummy;
 
 
 template<typename T>
@@ -62,6 +65,9 @@ int main()
 
     // printf("\n[Circular Doubly Linked List with Head Node]\n");
     // test_deque(circular_dll_head);
+
+    // printf("\n[Circular Doubly Linked List with Dummy Node]\n");
+    // test_deque(circular_dll_dummy);
 
     return 0;
 }
