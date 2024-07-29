@@ -1,5 +1,6 @@
+#include <cstdio>
 #include <vector>
-#include "..\..\data.h"
+#include "../../data.h"
 #include "linked_list.h"
 #include "array_list.h"
 using namespace std;

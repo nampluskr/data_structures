@@ -4,7 +4,7 @@
 #include "min_heap.h"
 #include "min_max_heap.h"
 #include "median_heap.h"
-#include "..\..\data.h"
+#include "../../data.h"
 
 std::priority_queue<Data> pq_stl;
 MaxHeap<Data, 10> max_pq;

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include "binary_search_tree_iter.h"
 #include "binary_search_tree_recur.h"
-#include "..\..\data.h"
+#include "../../data.h"
 
 BinarySearchTreeIter<Data> bst_iter;
 BinarySearchTreeRecur<Data> bst_recur;
